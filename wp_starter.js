@@ -23,17 +23,23 @@ function downloadWordpress() {
     }).on('data', function (data) {
         body += data;
         console.log('\033c');
-        console.log('Download wordpress: ' + parseInt(body.length / contentLength * 100) + '%');
+        console.log('Download Wordpress: ' + parseInt(body.length / contentLength * 100) + '%');
     })
 }
 
 function unzipWordpress() {
     console.log('Wordpress unpacking...');
-    fs.createReadStream(WORDPRESS_ZIP_LOCALE).pipe(unzip.Extract({path: 'www/'}))
-        .on('finish', function () {
-            console.log('Wordpress unpacked!');
-            fs.unlink(WORDPRESS_ZIP_LOCALE, function () {
-                console.log(WORDPRESS_ZIP_LOCALE + ' deleted');
-            });
+    fs.createReadStream(WORDPRESS_ZIP_LOCALE).pipe(unzip.Extract(
+        {
+            path: __dirname
+        }
+    )).on('finish', function () {
+        console.log('Wordpress unpacked!');
+        fs.unlink(WORDPRESS_ZIP_LOCALE, function () {
+            console.log(WORDPRESS_ZIP_LOCALE + ' deleted');
         });
+        fs.rename('wordpress', 'www', function () {
+            console.log('rename "wordpress" to "www"');
+        })
+    });
 }
