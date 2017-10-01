@@ -1,0 +1,24 @@
+{
+  "name": "wp-starter",
+  "version": "1.0.0",
+  "description": "The fastest way to get started with Wordpress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KrzywdaKrystian/wp-starter.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KrzywdaKrystian/wp-starter/issues"
+  },
+  "homepage": "https://github.com/KrzywdaKrystian/wp-starter#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "request": "^2.83.0",
+    "unzip": "^0.1.11"
+  }
+}
